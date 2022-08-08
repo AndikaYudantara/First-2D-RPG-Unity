@@ -679,7 +679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3160462222379506135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.1699996, y: -0.96000004, z: 0.17504616}
+  m_LocalPosition: {x: 7.1699996, y: -0.96000004, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -822,9 +822,9 @@ MonoBehaviour:
   healthBar: {fileID: 3160462222003052892}
   damageNumber: {fileID: 3160462222415665835}
   agroRadius: 11
-  expDrop: 5
+  expDrop: 10
   maxHealth: 100
-  attackDamage: 3
+  attackDamage: 10
   attackRange: 2.2
   attackRate: 1.2
   moveSpeed: 20

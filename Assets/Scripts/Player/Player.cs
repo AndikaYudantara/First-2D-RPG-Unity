@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     int maxExp = 10;
     int level = 1;
     int currentHealth;
+    int heavyAttackModifier = 150;
     
 
     private void Start()
@@ -65,7 +66,14 @@ public class Player : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<Skeleton>().TakeDamage(attackDamage);
+                if (enemy.ToString() == "Skeleton (UnityEngine.CapsuleCollider2D)")
+                {
+                    enemy.GetComponent<Skeleton>().TakeDamage(attackDamage);
+                }
+                if (enemy.ToString() == "FlyingEye (UnityEngine.CapsuleCollider2D)")
+                {
+                    enemy.GetComponent<FlyingEye>().TakeDamage(attackDamage);
+                }
             }
         }
         else if (attackType == 2)
@@ -73,7 +81,14 @@ public class Player : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange + 2.5f, enemyLayers);
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<Skeleton>().TakeDamage(attackDamage*150/100);
+                if (enemy.ToString() == "Skeleton (UnityEngine.CapsuleCollider2D)")
+                {
+                    enemy.GetComponent<Skeleton>().TakeDamage(attackDamage*heavyAttackModifier/100);
+                }
+                if (enemy.ToString() == "FlyingEye (UnityEngine.CapsuleCollider2D)")
+                {
+                    enemy.GetComponent<FlyingEye>().TakeDamage(attackDamage*heavyAttackModifier/100);
+                }
             }
         }
     }
@@ -102,7 +117,9 @@ public class Player : MonoBehaviour
     void StatusUp()
     {
         maxHealth *= 2;
-        healthBar.SetHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
+        healthBarUI.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
         attackDamage += attackDamage * 1 / 5;
         attackRate += 0.1f;
     }
