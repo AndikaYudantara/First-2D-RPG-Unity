@@ -10,8 +10,13 @@ public class Player : MonoBehaviour
     public PlayerMovement movement;
     public PlayerCombat combat;
     public Transform attackPoint;
+
     public HealthBar healthBar;
+    public HealthBarUI healthBarUI;
+    public ExpBar expBar;
+    public LevelUI levelUI;
     public DamageNumber damageNumber;
+    public LevelUp levelUp;
 
     public int maxHealth = 100;
     public float attackRange = 1f;
@@ -28,8 +33,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        healthBarUI.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
+        expBar.SetMaxExp(maxExp);
+        expBar.SetExp(currentExp);
+        levelUI.setLevel(level);
         movement.defaultMoveSpeed = moveSpeed;
     }
 
@@ -72,10 +81,12 @@ public class Player : MonoBehaviour
     public void GetDrop(int exp)
     {
         currentExp += exp;
-        while (currentExp > maxExp)
+        while (currentExp >= maxExp)
         {
             LevelUp();
         }
+        expBar.SetMaxExp(maxExp);
+        expBar.SetExp(currentExp);
     }
 
     void LevelUp()
@@ -83,12 +94,15 @@ public class Player : MonoBehaviour
         currentExp = currentExp - maxExp;
         maxExp += maxExp * 1 / 2;
         level += 1;
+        levelUI.setLevel(level);
+        levelUp.showLevelUp(level);
         StatusUp();
     }
 
     void StatusUp()
     {
         maxHealth *= 2;
+        healthBar.SetHealth(maxHealth);
         attackDamage += attackDamage * 1 / 5;
         attackRate += 0.1f;
     }
@@ -96,6 +110,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBarUI.SetHealth(currentHealth);
         healthBar.SetHealth(currentHealth);
         damageNumber.showDamage(damage);
         animator.SetTrigger("Hit");

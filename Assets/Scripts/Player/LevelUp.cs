@@ -4,17 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DamageNumber : MonoBehaviour
+
+public class LevelUp : MonoBehaviour
 {
     public Animator animator;
     public TextMeshProUGUI textUI;
 
     string textDamage;
 
-    public void showDamage(int damage)
+    public void showLevelUp(int level)
     {
-        textDamage = damage.ToString();
+        textDamage = "Level Up !";
         textUI.text = textDamage;
-        animator.SetTrigger("Hit");
+        animator.SetTrigger("LevelUp");
     }
 }

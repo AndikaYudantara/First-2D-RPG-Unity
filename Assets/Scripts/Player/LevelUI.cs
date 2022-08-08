@@ -4,17 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DamageNumber : MonoBehaviour
+public class LevelUI : MonoBehaviour
 {
-    public Animator animator;
     public TextMeshProUGUI textUI;
-
     string textDamage;
 
-    public void showDamage(int damage)
+    public void setLevel(int lvl)
     {
-        textDamage = damage.ToString();
+        textDamage = lvl.ToString()+'.';
         textUI.text = textDamage;
-        animator.SetTrigger("Hit");
     }
 }
