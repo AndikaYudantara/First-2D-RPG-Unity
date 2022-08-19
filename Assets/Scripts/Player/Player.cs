@@ -74,6 +74,10 @@ public class Player : MonoBehaviour
                 {
                     enemy.GetComponent<FlyingEye>().TakeDamage(attackDamage);
                 }
+                if (enemy.ToString() == "King (UnityEngine.CapsuleCollider2D)")
+                {
+                    enemy.GetComponent<King>().TakeDamage(attackDamage);
+                }
             }
         }
         else if (attackType == 2)
@@ -88,6 +92,10 @@ public class Player : MonoBehaviour
                 if (enemy.ToString() == "FlyingEye (UnityEngine.CapsuleCollider2D)")
                 {
                     enemy.GetComponent<FlyingEye>().TakeDamage(attackDamage*heavyAttackModifier/100);
+                }
+                if (enemy.ToString() == "King (UnityEngine.CapsuleCollider2D)")
+                {
+                    enemy.GetComponent<King>().TakeDamage(attackDamage * heavyAttackModifier / 100);
                 }
             }
         }
