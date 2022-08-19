@@ -11,7 +11,7 @@ public class LevelUI : MonoBehaviour
 
     public void setLevel(int lvl)
     {
-        textDamage = lvl.ToString()+'.';
+        textDamage = "Lv"+lvl.ToString()+'.';
         textUI.text = textDamage;
     }
 }
