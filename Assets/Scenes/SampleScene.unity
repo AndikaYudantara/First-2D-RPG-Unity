@@ -1900,6 +1900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonObj
       objectReference: {fileID: 0}
+    - target: {fileID: 3160462221382395061, guid: 85854231d3184ba4b9fa8436276cbe45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3160462221810879894, guid: 85854231d3184ba4b9fa8436276cbe45, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
